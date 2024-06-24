@@ -8,8 +8,8 @@ public class TaskService
     {   
         if (title == null)
     
-        title ??= "Nulo";
-        description ??= "Nulo";  
+        title ??= "NULL";
+        description ??= "NULL";  
         var task = new Task { Id = nextId++, Title = title, Description = description, IsCompleted = false };
         tasks.Add(task);
         return task;

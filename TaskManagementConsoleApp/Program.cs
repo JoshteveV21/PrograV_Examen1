@@ -1,4 +1,4 @@
-﻿using TaskManagementLibrary; //RETO 1 (1 pt): La linea está bien, pero no funciona, corregir (Se le agregó una referencia a la librería) (Listo)
+﻿using TaskManagementLibrary; //RETO 1 (1 pt): La linea está bien, pero no funciona, corregir (Se le agregó una referencia a la librería) (Listo) (Se le hizo la referencia a la librería)
 
 class Program
 {
@@ -35,7 +35,7 @@ class Program
 
                     /* RETO 2 (3 pts) : previo a agregar la tarea, verificar que 
                     los datos no sean solo espacios en blanco, de ser así 
-                    asignar nulo al dato ( title o description) (Listo)
+                    asignar nulo al dato ( title o description) (Listo) (Se le añadió la condicional "if" en caso de que el dato introducido por el usuario sea nulo, se le rellenara con el valor "NULL")
                     */
                     
                     var task = taskService.AddTask(title, description);
@@ -54,23 +54,24 @@ class Program
                     Console.Write("Introduzca el Id de la tarea por actualizar: ");
                     var updateId = int.Parse(Console.ReadLine());
                       task = taskService.GetTaskById(updateId);
-                    // RETO 3 (2 pts): corregir, debe cargarse con la tarea que posea el id indicado en updateId (Listo) 
+                    // RETO 3 (2 pts): corregir, debe cargarse con la tarea que posea el id indicado en updateId (Listo) (Se utlizo el metodo "Get" para obtener los datos de la tarea de acuerdo a su "ID")
                    
                    
-                    //RETO 4 (1 pt): imprimir el titulo de la tarea seleccionada(Listo)
+                    //RETO 4 (1 pt): imprimir el titulo de la tarea seleccionada(Listo) (Como ya se había obtenido el metod "Get" simplemente se le indicó que imprimiera en pantalla el valor del titulo y la descripcion con su respectivo dato)
                    
 
                     Console.Write($"{task.Title} -> Nuevo titulo: ");
                     var newTitle = Console.ReadLine();
                     
-                    //RETO 5 (1 pt): imprimir la descripcion de la tarea seleccionada(Listo)
+                    //RETO 5 (1 pt): imprimir la descripcion de la tarea seleccionada(Listo) (Lo mismo que en el reto 4, solo que ahora la descripcion)
                     Console.Write($"{task.Description} -> Nueva Descripcion: ");
                     var newDescription = Console.ReadLine();
                     Console.Write("Completada (true/false): ");
                     var isCompleted = bool.Parse(Console.ReadLine());
                     
-                    //RETO 6 ( 5 pts ) El código debe modificarse en la librería, de tal forma que si se recibe title vacio(Listo)
-                    // entonces no se modifique, lo mismo para description
+                    /*RETO 6 ( 5 pts ) El código debe modificarse en la librería, de tal forma que si se recibe title vacio
+                     entonces no se modifique, lo mismo para description (Listo) (En la librería, al archivo "TaskServices.cs" se le agregó de que en dado caso que el nuevo dato ingresado por el usuario
+                     sea nulo, entonces no afectaría los datos actuales*/
                     if (taskService.UpdateTask(updateId, newTitle, newDescription, isCompleted))
                     {
                         Console.WriteLine("Tarea completada exitosamente.");
@@ -141,7 +142,7 @@ class Program
                              {
                                 Console.WriteLine("No se pudo completar la tarea.");
                             }
-//Reto 8 (Listo)
+//Reto 8 (Listo) (Se hizo un método entero para cambiar el valor del estado de la tarea, en dado caso de que la tarea no sea completada, este hará que la tarea se muestre como completada)
                     break;   
                 case "6":
                     return;
